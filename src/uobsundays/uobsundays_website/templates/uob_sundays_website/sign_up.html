@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    UOB Sundays | Sign Up
+{% endblock %}
+{% block signupmenu %}
+    active
+{% endblock %}
+{% block bodyclass %}
+    signup
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1><span class="title">SIGN UP</span></h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1><span class="title">SIGN UP</span></h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="tabs-content">
+                {% if contents %}
+                    {% for content in contents %}
+                        <div class="content active" id="overview">
+                        <div class="medium-12 small-12 event-pic">
+                            <img id="signup" src="{% static 'images/sign-up-banner.png' %}">
+                        </div>
+                        <div class="small-12 medium-4 columns left" id="signup-schedule">
+                            <div id="sign-upTitle">
+                                <div class="small-12" id="eventdetails"><strong>EVENT DETAILS</strong></div>
+                            </div>
+                            <div id="sign-upTable">
+                                <div class="small-12 clearfix">
+                                    <div class="medium-4 small-5 left"><strong>VENUES</strong></div>
+                                    <div class="medium-8 small-7 right"> {{ content.EventDetailVenue|safe}}</div>
+                                </div>
+
+                                <div class="small-12 clearfix">
+                                    <div class="medium-4 small-5 left"><strong>DATES</strong></div>
+                                    <div class="medium-8 small-7 right"> {{ content.EventDetailDate|safe}}</div>
+                                </div>
+
+                                <div class="small-12 clearfix">
+                                    <div class="medium-4 small-5 left"><strong>SESSIONS</strong></div>
+                                    <div class="medium-8 small-7 right"> {{ content.EventDetailSession|safe }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-12 medium-8 wrapper right mobile">
+                            <h2>{{ content.header }}</h2>
+
+
+                            {{ content.content|safe }}
+                            <!--<p>Back by popular demand for a limited time! We heard you, and we have
+                                added more sessions for the month of July!</p>
+
+                            <p>Bring your kids for a 90 minute introduction to basic coding with
+                                our UOB Sunday Banking ambassadors, where they will be able to develop
+                                their very first game with popular coding programmes like Lightbots,
+                                Kodu and Code.org. It's the best way to nurture their computational
+                                and problem solving skills!</p>
+
+                            <p>This program is in partnership with the Infocomm Development Authority
+                                of Singapore (IDA), designed for kids from 8 – 12 years old. </p>
+
+                            <p>Every Sunday at Serangoon Central (Nex) and Jem UOB branches from 5 to 26 July 2015.</p>
+
+                            <p><strong>Session 1</strong>: 11.30 am – 1.00 pm <br>
+                                <strong>Session 2</strong>: 1.30 pm – 3.00 pm </p>
+
+                            <p>Spaces are limited and are on a first-come-first-serve basis so register
+                                early to avoid disappointment. To ensure that other children also get
+                                the opportunity to participate in these activities, parents can only
+                                register their child once for any of the activities organised.</p>-->
+
+
+
+                            {#                    <p style="color: red;"><strong>REGISTRATION IS FULL</strong></p>#}
+
+                            <p style="color: red;">
+                                PRE-REGISTRATION IS FULL
+                            </p>
+
+                            <p>
+                                <i style="font-size:10px;">Please note that UOB reserves the right to make changes to the
+                                    programme from time to time at our sole discretion. Changes, if necessary will be
+                                    announced here and/or via telephone and emails.</i>
+                            </p>
+                        </div>
+                        <!--/columns-->
+                    {% endfor %}
+                {% else %}
+                    <h1>No events to sign up!</h1>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block foundation_js %}
+    <script>
+        $(document).foundation({
+            tab: {
+                callback: function(tab){
+                    console.log(tab);
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

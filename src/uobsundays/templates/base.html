@@ -1,0 +1,437 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Enjoy full-banking service on Sundays at UOB Serangoon Central (NEX) and Jem! Bank at your leisure and keep your family entertained with fun, enriching activities.">
+    <meta property="og:title" content="{% block og-title %}UOBSundays{% endblock %}" />
+    <meta property="og:site_name" content="{% block og-site-name %}UOB Sundays{% endblock %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{% block og-image %}https://www.uobsundays.com/static/images/Facebook-Post-1200px.jpg{% endblock %}" />
+    <meta property="og:description" content="{% block og-description %}
+	      Sundays Fundays
+It’s fun for the whole family with UOB Sunday Banking.
+
+UOB Serangoon Central (Nex) and Jem now offer full-banking services on Sundays! With enriching and fun activities to keep your family entertained, you can now bank at your own leisure.
+
+Visit us at these branches this Sunday!{% endblock %}" />
+    <meta property="og:url" content="{% block og-url %}https://www.uobsundays.com/{% endblock %}" />
+    <title>{% block title %}
+        UOB Sunday Banking
+    {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bower_components/foundation/css/normalize.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'bower_components/foundation/css/foundation.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'bower_components/slick.js/slick/slick.css' %}" />
+    <link rel="stylesheet" href="{% static 'bower_components/slick.js/slick/slick-theme.css' %}" />
+    <link rel="stylesheet" href="{% static 'bower_components/lightbox2/dist/css/lightbox.css' %}" />
+    <link rel="stylesheet" href="{% static 'bower_components/fontawesome/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" type="text/css" charset="utf-8" href="{% static 'styles/app.scss' %}">
+    <link rel="stylesheet" type="text/css" charset="utf-8" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" type="text/css" charset="utf-8" href="{% static 'styles/mobilestyle.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/ico" />
+    <link rel="stylesheet" href="{% static 'bower_components/fancybox/source/jquery.fancybox.css' %}">
+    {% block extra_metatags %}{% endblock %}
+    {% block extra_css %}
+    {% endblock %}
+</head>
+<body class="{% block bodyclass %}basebody{% endblock %}">
+<!-- Facebook share button script codes -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            app_id     : '1450074521964541',
+            xfbml      : true,
+            version    : 'v2.4'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1450074521964541";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="off-canvas-wrap" data-offcanvas>
+    {#    Mobile nav menu#}
+    <nav class="nav-primary show-for-medium-down" id="nav-primary">
+        <ul class="off-canvas-list">
+            <li class="nav__item">
+                <a id="menu-home" href="{% url 'website:index' %}" class="nav__item__title">
+                    Home
+                </a>
+            </li>
+            <li class="nav__item">
+                <a id="menu-contests" href="#" class="nav__item__title">
+                    Contest
+                </a>
+                <ul class="nav__item__content">
+                    <li class="nav__item">
+                        <a href="#" class="nav__item__title">
+                            November
+                        </a>
+                        <ul class="nav__item__content">
+                            <li class="nav__item">
+                                <a href="{% url 'youngartist:index' %}" class="nav__item__title">
+                                    Overview
+                                </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="{% url 'youngartist:submission' %}" class="nav__item__title">
+                                    Submissions
+                                </a>
+                            </li>
+                            {#                            <li class="nav__item">#}
+                            {#                                <a href="{% url 'youngartist:shortlisted' %}" class="nav__item__title">#}
+                            {#                                    Shortlisted#}
+                            {#                                </a>#}
+                            {#                            </li>#}
+                            <li class="nav__item">
+                                <a href="{% url 'youngartist:winners' %}" class="nav__item__title">
+                                    Winners
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a id="menu-event" href="#" class="nav__item__title">
+                    Events
+                </a>
+                <ul class="nav__item__content">
+                    <li class="nav__item">
+                        <a href="#" class="nav__item__title">
+                            June
+                        </a>
+                        <ul class="nav__item__content">
+                            <li class="nav__item">
+                                <a href="{% url 'events:index' %}" class="nav__item__title">
+                                    Overview
+                                </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="{% url 'events:gallery' %}" class="nav__item__title">
+                                    Photo Gallery
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End of June Mobile Events -->
+                    <li class="nav__item">
+                        <a href="#" class="nav__item__title">
+                            July
+                        </a>
+                        <ul class="nav__item__content">
+                            <li class="nav__item">
+                                <a href="{% url 'events:index2' %}" class="nav__item__title">
+                                    Overview
+                                </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="{% url 'events:gallery2' %}" class="nav__item__title">
+                                    Photo Gallery
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End of July Mobile Events -->
+                    <li class="nav__item">
+                        <a href="#" class="nav__item__title">
+                            November
+                        </a>
+                        <ul class="nav__item__content">
+                            <li class="nav__item">
+                                <a href="{% url 'events:gallery3' %}" class="nav__item__title">
+                                    Photo Gallery
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End of November Mobile Events -->
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a id="menu-solutions" href="{% url 'bankingsolutions:bankingsolutions' %}" class="nav__item__title">
+                    Banking solutions
+                </a>
+            </li>
+            <li class="nav__item">
+                <a id="menu-signup" href="{% url 'website:sign_up' %}" class="nav__item__title">
+                    Sign Up</a>
+            </li>
+            <li class="nav__item">
+                <a id="menu-locate" href="{% url 'website:locate_us' %}" class="nav__item__title">
+                    Locate Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+    {#    End of mobile nav menu#}
+    <div class="show-for-medium-down row mobile-nav ">
+        <nav class="mobile-helper-bar">
+            <section class="left">
+                <a href="http://www.uob.com.sg/" title="UOB" target="_blank">
+                    <img id="logo" src="{% static 'images/uob.png' %}">
+                </a>
+            </section>
+            <img class="hamburger right" id="off-canvas-toggle" src="{% static 'images/icon-mobilenav.png' %}">
+        </nav>
+    </div>
+    <div id="topheader" class="show-for-medium-up">
+        <div class="row" id="header">
+            <div class="left logo">
+                <a href="http://www.uob.com.sg/" title="UOB" target="_blank">
+                    <img id="logo" src="{% static 'images/uob.png' %}">
+                </a>
+            </div>
+            <nav class="top-bar right" data-topbar role="navigation">
+                <section class="top-bar-section">
+                    <ul class="right">
+                        <li class="{% block homemenu %}{% endblock %}" style="padding-left: 0.85em">
+                            <a id="menu-home" href="{% url 'website:index' %}">
+                                Home
+                            </a>
+                        </li>
+                        <li id="special-nav2" class="has-dropdown not-click {% block contestsmenu %}{% endblock %}">
+                            <a id="menu-contests" href="#">
+                                Contest
+                            </a>
+                            <ul class="dropdown">
+                                <li class="has-dropdown not-click">
+                                    <a href="#">
+                                        <div class="dropdownhover {% block contest-june-base %}{% endblock %}">
+                                            November
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href="{% url 'youngartist:index' %}">
+                                                <div class="overview dropdownhover {% block contests-june-overview %}{% endblock %}">
+                                                    Overview
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'youngartist:submission' %}">
+                                                <div class="gallery dropdownhover {% block contests-june-gallery %}{% endblock %}">
+                                                    Submissions
+                                                </div>
+                                            </a>
+                                        </li>
+                                        {#                                        <li>#}
+                                        {#                                            <a href="{% url 'youngartist:shortlisted' %}">#}
+                                        {#                                                <div class="gallery dropdownhover {% block contests-june-shortlisted %}{% endblock %}">#}
+                                        {#                                                    Shortlisted#}
+                                        {#                                                </div>#}
+                                        {#                                            </a>#}
+                                        {#                                        </li>#}
+                                        <li>
+                                            <a href="{% url 'youngartist:winners' %}">
+                                                <div class="gallery dropdownhover {% block contests-june-winners %}{% endblock %}">
+                                                    Winners
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown not-click {% block eventbase %}{% endblock %}">
+                            <a href="#" id="menu-event">
+                                Events
+                            </a>
+                            <ul class="dropdown">
+                                <li class="has-dropdown not-click">
+                                    <a href="#">
+                                        <div class="dropdownhover {% block junebase %}{% endblock %}">
+                                            June
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href="{% url 'events:index' %}">
+                                                <div class="dropdownhover {% block juneoverview %}{% endblock %}">
+                                                    Overview
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'events:gallery' %}">
+                                                <div class="dropdownhover {% block junegallery %}{% endblock %}">
+                                                    Photo Gallery
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- End of June Events -->
+                                <li class="has-dropdown not-click">
+                                    <a href="#">
+                                        <div class="dropdownhover {% block julybase %}{% endblock %}">
+                                            July
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href="{% url 'events:index2' %}">
+                                                <div class="dropdownhover {% block julyoverview %}{% endblock %}">
+                                                    Overview
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'events:gallery2' %}">
+                                                <div class="dropdownhover {% block julygallery %}{% endblock %}">
+                                                    Photo Gallery
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- End of July Events -->
+                                <li class="has-dropdown not-click">
+                                    <a href="#">
+                                        <div class="dropdownhover {% block novemberbase %}{% endblock %}">
+                                            November
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href="{% url 'events:gallery3' %}">
+                                                <div class="dropdownhover {% block novembergallery %}{% endblock %}">
+                                                    Photo Gallery
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- End of November Events -->
+                            </ul>
+                        </li>
+                        <li id="special-nav" class="{% block solutionsmenu %}{% endblock %}">
+                            <a id="menu-solutions" href="{% url 'bankingsolutions:bankingsolutions' %}">
+                                Banking solutions
+                            </a>
+                        </li>
+                        <li class="{% block signupmenu %}{% endblock %}">
+                            <a id="menu-signup" href="{% url 'website:sign_up' %}">
+                                Sign Up
+                            </a>
+                        </li>
+                        <li class="{% block locatemenu %}{% endblock %}">
+                            <a id="menu-locate"  href="{% url 'website:locate_us' %}">
+                                Locate Us
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    </div>
+    <div class="page-content" id="page-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer class="{% block footerclass %}footerClass{% endblock %}">
+        <footer class="footerClassGrey">
+            <div class="row">
+                <div class="clearfix">
+                    <div class="copyright medium-6 small-12 left">
+                        Copyright &copy; 2015 United Overseas Bank Limited Co. Reg. No. 193500026Z. All Rights Reserved.</div>
+                    <div class="footernav medium-4 small-8 left">
+                <span class="links">
+                    <a href="http://www.uob.com.sg/important/index.html" target="_blank">
+                        Legal Notices
+                    </a>
+                </span>
+                <span>
+                    |
+                </span>
+                <span class="links">
+                    <a href="http://www.uob.com.sg/privacy/index.html" target="_blank">
+                        Privacy Policy
+                    </a>
+                </span>
+                <span>
+                    |
+                </span>
+                <span class="links">
+                    Share
+                </span>
+                    </div>
+                    <div class="medium-2 small-4 right">
+                        <div class="fb-share-button footerFB" data-href="http://www.uobsundays.com" data-layout="button" id="base-share">
+                        </div>
+                        <a href="mailto:?subject=Selected UOB branches now offer Sunday banking&amp;body=Check out this site http://www.uobsundays.com."
+                           title="Share by Email" class="footermail">
+                            <img src="{% static 'images/icon-email.png' %}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </footer>
+    <a class="exit-off-canvas"></a>
+</div>
+<script src="{% static 'bower_components/foundation/js/vendor/modernizr.js' %}"></script>
+<script src="{% static 'bower_components/foundation/js/vendor/jquery.js' %}"></script>
+<script src="{% static 'bower_components/foundation/js/vendor/fastclick.js' %}"></script>
+<script src="{% static 'bower_components/jquery-1.11.0.min/index.js' %}"></script>
+<script src="{% static 'bower_components/jquery-migrate-1.2.1.min/index.js' %}"></script>
+<script src="{% static 'bower_components/lightbox2/dist/js/lightbox.min.js' %}"></script>
+<script src="{% static 'bower_components/slick.js/slick/slick.min.js' %}"></script>
+<script src="{% static 'bower_components/foundation/js/foundation.min.js' %}"></script>
+<script src="{% static 'bower_components/foundation/js/foundation/foundation.topbar.js' %}"></script>
+<script src="{% static 'bower_components/fancybox/source/jquery.fancybox.pack.js' %}"></script>
+<script type="text/javascript">
+    // Show the off-canvas navigation
+    $('#off-canvas-toggle').click(function() {
+        $('#nav-primary').toggleClass('off-canvas-show');
+        $('#nav-primary').parent().toggleClass('wrapper-off-canvas-show');
+    });
+    $('.exit-off-canvas').click(function() {
+        $('#nav-primary').toggleClass('off-canvas-show');
+        $('#nav-primary').parent().toggleClass('wrapper-off-canvas-show');
+    });
+
+    // Hide the off-canvas nav when clicking a link
+    //$('#nav-primary').find('a').on('click', function(e) {
+    //	$('#nav-primary').removeClass('off-canvas-show');
+    //});
+
+    //Add closed class to all sub menu
+    $('.nav__item__title').click(function() {
+        $(this).next().toggle('off-canvas-open');
+    });
+
+    //Change background color when sub-menu is clicked
+    $('.nav-primary > ul > li > ul > li > a').click(function() {
+        $(this).parent().toggleClass('mobile-nav-active');
+    });
+
+    //Adding arrows behind menu options that has child
+    $(".nav__item").each(function(){
+        if($(this).has("ul").length){
+            $(this).children(".nav__item__title").addClass("mobile-child-up");
+        }
+    });
+
+    //Toggling the arrow up and down
+    $(".nav__item > .nav__item__title").click(function() {
+        if($(this).parent().has("ul").length){
+            $(this).toggleClass("mobile-child-up");
+            $(this).toggleClass("mobile-child-down");
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(document).foundation();
+</script>
+{% block extra_js %}
+{% endblock %}
+</body>
+</html>

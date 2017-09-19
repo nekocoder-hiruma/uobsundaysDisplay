@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load url_replace %}
+{% block solutionsmenu %}
+    active
+{% endblock %}
+{% block bodyclass %}
+    bankingsol
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                    <span class="title">
+                        BANKING SOLUTIONS
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                    <span class="title">
+                        BANKING SOLUTIONS
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="tabs-content">
+                <div class="tabs-content gallery-tab-content">
+                    <div class="content active" id="promotions">
+                        {% if images %}
+                            <ul class="medium-block-grid-2 small-block-grid-1">
+                                {% for image in images %}
+                                    {% if image.image %}
+                                        <li>
+                                            <div class="small-5 columns">
+                                                <a href="http://{{ image.link }}" target="_blank">
+                                                    <img src="{{ image.image.url }}"/>
+                                                </a>
+                                            </div>
+                                            <div class="small-7 columns">
+                                                <a href="http://{{ image.link }}" target="_blank">
+                                                    <p style="color: {{ image.color }}">
+                                                        <strong>
+                                                            {{ image.title }}
+                                                        </strong>
+                                                    </p>
+                                                </a>
+                                                <p>
+                                                    {{ image.description }}
+                                                </p>
+                                                <span class="additional-content">
+                                                    {{ image.additional_content|safe }}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% if is_paginated %}
+                                <div class="pagination">
+                                    {#                            {% if page_obj.has_previous %}#}
+                                    {#                                <a class="arrow prev" href="?{% url_replace request 'page' page_obj.previous_page_number %}">#}
+                                    {#                                    <i class="fa fa-chevron-left"></i>#}
+                                    {#                                </a>#}
+                                    {#                            {% endif %}#}
+                                    {#                            {% if page_obj.has_next %}#}
+                                    {#                                <a class="arrow next" href="?{% url_replace request 'page' page_obj.next_page_number %}">#}
+                                    {#                                    <i class="fa fa-chevron-right"></i>#}
+                                    {#                                </a>#}
+                                    {#                            {% endif %}#}
+                                    <div class="center paging">
+                                        {% for page in paginator.page_range %}
+                                            {% if forloop.counter != 1 %}
+                                                &emsp;
+                                            {% endif %}
+                                            {% if page != page_obj.number %}
+                                                <div class="pagibox">
+                                                    <a href="?page={{ page }}">
+                                                        {% if page < 10 %}
+                                                            0{{ page }}
+                                                        {% else %}
+                                                            {{ page }}
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="pagibox active">
+                                                    <span>
+                                                        {% if page < 10 %}
+                                                            0{{ page }}
+                                                        {% else %}
+                                                            {{ page }}
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h1>
+                                No Event Photos yet!
+                            </h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).foundation({
+            tab: {
+                callback:function (tab) {
+                    console.log(tab);
+                }
+            }
+        });
+    </script>
+    <script>
+        $('').on('change', function(){
+
+        });
+    </script>
+{% endblock %}

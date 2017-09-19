@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load url_replace %}
+{% block eventbase %}
+    active
+{% endblock %}
+{% block junegallery %}
+    {% if request.get_full_path == '/events/june/gallery/' %}
+        liactive
+    {% endif %}
+{% endblock %}
+{% block junebase %}
+    {% if request.get_full_path == '/events/june/gallery/' %}
+        liactive
+    {% endif %}
+{% endblock %}
+{% block julygallery %}
+    {% if request.get_full_path == '/events/july/gallery/' %}
+        liactive
+    {% endif %}
+{% endblock %}
+{% block julybase %}
+    {% if request.get_full_path == '/events/july/gallery/' %}
+        liactive
+    {% endif %}
+{% endblock %}
+{% block novembergallery %}
+    {% if request.get_full_path == '/events/november/gallery/' %}
+        liactive
+    {% endif %}
+{% endblock %}
+{% block novemberbase %}
+    {% if request.get_full_path == '/events/november/gallery/' %}
+        liactive
+    {% endif %}
+{% endblock %}
+{% block bodyclass %}
+    subpages
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                <span class="title">
+                    Events
+                </span>
+                    &nbsp;
+                <span class="tag">
+                    BE A CODING WARRIOR
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                <span class="title">
+                    Events
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <ul class="tabs" data-options="scroll_to_content: false">
+                <li class="tab-title">
+                    <a href="{% url 'events:index2' %}">
+                        Overview
+                    </a>
+                </li>
+                <li class="tab-title separator">
+                    |
+                </li>
+                <li class="tab-title active">
+                    <a href="{% url 'events:gallery2' %}">
+                        Photo Gallery
+                    </a>
+                </li>
+            </ul>
+            <div class="tabs-content">
+                <div class="content active" id="events-gallery">
+                    <div class="row clearfix">
+                        <div class="medium-7 columns">
+                            <p>
+                                <strong>
+                                    Have a look at what our little coding warriors got up to in July!
+                                </strong>
+                            </p>
+                        </div>
+                        <div class="medium-4 columns right">
+                            <div class="row">
+                                <div class="medium-4 columns filter-text inline">
+                                    Sort by:
+                                </div>
+                                <div class="medium-8 columns">
+                                    <select class="sort-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                        <option>
+                                            Select...
+                                        </option>
+                                        <option value="{% url 'events:latestgallery2' %}">
+                                            Latest to Earliest
+                                        </option>
+                                        <option value="{% url 'events:oldestgallery2' %}">
+                                            Earliest to Latest
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs-content gallery-tab-content">
+                    <div class="content active" id="page1">
+                        {% if images %}
+                            <ul class="medium-block-grid-5 small-block-grid-2">
+                                {% for image in images %}
+                                    {% if image.image %}
+                                        <li>
+                                            <a href="{{ image.image.url }}" class="fancybox" rel="gallery-events">
+                                                <img src="{{ image.image.url }}" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% if is_paginated %}
+                                <div class="pagination">
+                                    <div class="center paging">
+                                        {% for page in paginator.page_range %}
+                                            {% if forloop.counter != 1 %}
+                                                &emsp;
+                                            {% endif %}
+                                            {% if page != page_obj.number %}
+                                                <div class="pagibox">
+                                                    <a href="?page={{ page }}">
+                                                        {% if page < 10 %}
+                                                            0{{ page }}
+                                                        {% else %}
+                                                            {{ page }}
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="pagibox active">
+                                    <span>
+                                        {% if page < 10 %}
+                                            0{{ page }}
+                                        {% else %}
+                                            {{ page }}
+                                        {% endif %}
+                                    </span>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h1>No Event Photos yet!</h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).foundation({
+            tab: {
+                callback:function (tab) {
+                    console.log(tab);
+                }
+            }
+        });
+    </script>
+    <script>
+        $('').on('change', function(){
+
+        });
+        $(document).ready(function() {
+            $(".fancybox").fancybox({
+                openEffect	: 'fade',
+                closeEffect	: 'fade'
+            });
+        });
+    </script>
+{% endblock %}

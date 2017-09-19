@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    UOB Sundays | Events
+{% endblock %}
+{% block eventbase %}
+    active
+{% endblock %}
+{% block junebase %}
+    liactive
+{% endblock %}
+{% block juneoverview %}
+    liactive
+{% endblock %}
+{% block bodyclass %}
+    subpages
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                    <span class="title">
+                        Events
+                    </span>
+                    &nbsp;
+                    <span class="tag">
+                        BE A CODING WARRIOR
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                    <span class="title">
+                        Events
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <ul class="tabs" data-options="scroll_to_content: false">
+                <li class="tab-title active">
+                    <a href="{% url 'events:index' %}">
+                        Overview
+                    </a>
+                </li>
+                <li class="tab-title separator">
+                    |
+                </li>
+                <li class="tab-title">
+                    <a href="{% url 'events:gallery' %}">
+                        Photo Gallery
+                    </a>
+                </li>
+            </ul>
+            <div class="tabs-content">
+                <div class="content active" id="overview">
+                    <div class="small-12 columns show-for-small-only event-pic">
+                        <div class="row">
+                            <img id="event" src="{% static 'images/eventimg-july.jpg' %}">
+                            <div id="table-start">
+                                EVENT DETAILS
+                            </div>
+                            <div class="row" id="info-bar">
+                                <div class="row event-table">
+                                    <div class="small-3 columns" id="bar-4">
+                                        <strong>
+                                            Venues
+                                        </strong>
+                                    </div>
+                                    <div class="small-9 columns" id="bar-8">
+                                        #01-52/53 Serangoon Central (Nex) and #02-15 Jem
+                                    </div>
+                                </div>
+                                <div class="row event-table">
+                                    <div class="small-3 columns" id="bar-4">
+                                        <strong>
+                                            Dates
+                                        </strong>
+                                    </div>
+                                    <div class="small-9 columns" id="bar-8">
+                                        Every Sunday,<br>14 - 28 June 2015
+                                    </div>
+                                </div>
+                                <div class="row event-table">
+                                    <div class="small-3 columns" id="bar-4">
+                                        <strong>
+                                            Sessions
+                                        </strong>
+                                    </div>
+                                    <div class="small-9 columns" id="bar-8">
+                                        11.30am - 1.00pm <br>1.30pm - 3.00pm
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 medium-8 wrapper left mobile">
+                        <h2>
+                            Let your kids learn the science behind their favorite games!
+                        </h2>
+                        <p>
+                            Bring your kids for a 90 minute introduction to basic coding with
+                            our UOB Sunday Banking ambassadors, where they will be able to develop
+                            their very first game with popular coding programmes like Lightbots,
+                            Kodu and Code.org. It's the best way to nurture their computational
+                            and problem solving skills!
+                        </p>
+                        <p>
+                            This program is in partnership with the Infocomm Development Authority
+                            of Singapore (IDA), designed for kids from 8 – 12 years old.
+                        </p>
+                        <p>
+                            Every Sunday at Serangoon Central (Nex) and Jem UOB branches from 14
+                            to 28 June 2015.
+                        </p>
+                        <p>
+                            <strong>
+                                Session 1
+                            </strong>
+                            : 11.30 am – 1.00 pm <br>
+                            <strong>
+                                Session 2
+                            </strong>
+                            : 1.30 pm – 3.00 pm
+                        </p>
+                        <p>
+                            Spaces are limited and are on a first-come, first-served basis, so register
+                            early to avoid disappointment. To ensure that other children also get
+                            the opportunity to participate in these activities, parents can only
+                            register their child once for any of the activities organised.
+                        </p>
+                        {#                        <a class="button" id="sign" href="https://uniservices1.uobgroup.com/secure/forms/sunday_banking/sundaybanking.jsp" data-popup="true">#}
+                        {#                            Sign up now!#}
+                        {#                        </a>#}
+                        <p style="color: red;">
+                            <strong>
+                                REGISTRATION IS FULL
+                            </strong>
+                        </p>
+                        <p>
+                            <i style="font-size:10px;">
+                                Please note that UOB reserves the right to make changes to the
+                                programme from time to time at our sole discretion. Changes, if necessary will be
+                                announced here and/or via telephone and emails.
+                            </i>
+                        </p>
+                    </div>
+                    <div class="medium-4 columns show-for-medium-up">
+                        <div class="row">
+                            <img id="event" src="{% static 'images/eventimg-july.jpg' %}">
+                            <div id="table-start">
+                                EVENT DETAILS
+                            </div>
+                            <div class="row" id="info-bar">
+                                <div class="row event-table">
+                                    <div class="small-3 columns" id="bar-4">
+                                        <strong>
+                                            Venues
+                                        </strong>
+                                    </div>
+                                    <div class="small-9 columns" id="bar-8">
+                                        #01-52/53 Serangoon Central (Nex) and #02-15 Jem
+                                    </div>
+                                </div>
+                                <div class="row event-table">
+                                    <div class="small-3 columns" id="bar-4">
+                                        <strong>
+                                            Dates
+                                        </strong>
+                                    </div>
+                                    <div class="small-9 columns" id="bar-8">
+                                        Every Sunday,<br>14 - 28 June 2015
+                                    </div>
+                                </div>
+                                <div class="row event-table">
+                                    <div class="small-3 columns" id="bar-4">
+                                        <strong>
+                                            Sessions
+                                        </strong>
+                                    </div>
+                                    <div class="small-9 columns" id="bar-8">
+                                        11.30am - 1.00pm <br>1.30pm - 3.00pm
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content" id="events-gallery">
+                    <div class="row clearfix">
+                        <div class="medium-4 columns">
+                            <h2 class="left">
+                                Events Computational Thinking
+                            </h2>
+                        </div>
+                        <div class="medium-4 columns right">
+                            <div class="row">
+                                <div class="medium-3 columns filter-text inline">
+                                    Filter by:
+                                </div>
+                                <div class="medium-9 columns">
+                                    <select class="filter-select">
+                                        <option>
+                                            Latest
+                                        </option>
+                                        <option>
+                                            Location
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).foundation({
+            tab: {
+                callback: function(tab){
+                    console.log(tab);
+                }
+            }
+        });
+    </script>
+
+    <script>
+        $(function() {
+            $("a[data-popup]").live('click', function(e) {
+                window.open($(this)[0].href);
+                // Prevent the link from actually being followed
+                e.preventDefault();
+            });
+        });
+    </script>
+
+{% endblock %}

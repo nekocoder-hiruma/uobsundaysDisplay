@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Opps! Wrong page
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row">
+            <h2>Wrong url link!</h2>
+            <p>We apologise but the url you have requested for isn't available.</p>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        window.onload = function() {
+            if(!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+    </script>
+{% endblock %}

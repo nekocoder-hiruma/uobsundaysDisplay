@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contestsmenu %}
+    active
+{% endblock %}
+{% block bodyclass %}
+    submissions
+{% endblock %}
+{% block og-title %}
+    UOBSundays - The Little Art Contest
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+                    &nbsp;
+                    <span class="tag">
+                        The Little Art Contest
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                <span class="title">
+                    CONTEST
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <!-- End of pagehead div -->
+        <div class="content-wrapper">
+            <h4>
+                Sorry, only one vote is allowed per day on this email address
+            </h4>
+            <h5>
+                Click <a href="{% url 'youngartist:submission' %}">here</a> to go back to submission page
+            </h5>
+        </div>
+    </div>
+{% endblock %}

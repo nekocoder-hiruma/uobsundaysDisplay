@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load url_replace %}
+{% block contestsmenu %}
+	active
+{% endblock %}
+{% block contest-june-base %}
+	liactive
+{% endblock %}
+{% block contests-june-gallery %}
+	liactive
+{% endblock %}
+{% block bodyclass %}
+	submissions
+{% endblock %}
+{% block content %}
+	<div class="row main-content">
+		<div class="row pagehead">
+			<div class="medium-9 columns pagetitle show-for-medium-up">
+				<h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+					&nbsp;
+                    <span class="tag">
+                        The Little Art Contest
+                    </span>
+				</h1>
+			</div>
+			<div class="small-6 columns pagetitle show-for-small-only">
+				<h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+				</h1>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<a href="{% url 'website:index' %}">
+					<img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+				</a>
+			</div>
+		</div>
+		<div class="content-wrapper">
+			<ul class="tabs" data-options="scroll_to_content: false">
+				<li class="tab-title">
+					<a href="{% url 'youngartist:index' %}">
+						Overview
+					</a>
+				</li>
+				<li class="tab-title separator">
+					|
+				</li>
+				<li class="tab-title active">
+					<a href="{% url 'youngartist:submission' %}">
+						Submissions
+					</a>
+				</li>
+{#				<li class="tab-title separator">#}
+{#					|#}
+{#				</li>#}
+{#				<li class="tab-title">#}
+{#					<a href="{% url 'youngartist:shortlisted' %}">#}
+{#						Shortlisted Entries#}
+{#					</a>#}
+{#				</li>#}
+				<li class="tab-title separator">
+					|
+				</li>
+				<li class="tab-title">
+					<a href="{% url 'youngartist:winners' %}">
+						Winners
+					</a>
+				</li>
+			</ul>
+			<div class="tabs-content">
+				<div class="content active" id="events-gallery">
+					<form method="post" action="{% url 'youngartist:submission' %}">
+						{% csrf_token %}
+						<div class="row clearfix">
+							<div class="medium-7 columns">
+								<p>
+									<strong>
+										Take a look at these masterpieces by the little artists!
+									</strong>
+								</p>
+							</div>
+							<div class="medium-5 columns filter-text" id="filtersort">
+								<div class="right">
+									Filter:
+									{{ form.location }}
+									Sort by:
+									{{ form.created }}
+									{#                                    <input type="submit" value="Submit">#}
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="tabs-content gallery-tab-content">
+					<div class="content active">
+						{% if images %}
+							<ul class="medium-block-grid-5 small-block-grid-2">
+								{% for image in images %}
+									{% if image.image %}
+										{% if image.artist == 'Karin Lee Si Qi' %}
+                                            <li>
+                                                <a href="{% url 'youngartist:submission_vote' pk=image.pk %}" {# class="fancybox" rel="group" #}>
+                                                    <img src="{{ image.image.url }}" class="gallery-artist-image"/><br>
+                                                </a>
+                                                <div class="medium-12 small-12" style="height: 4.5em">
+                                                    <a href="{% url 'youngartist:submission_vote' pk=image.pk %}">
+                                                        <strong>
+                                                            {{ image.artist }}
+                                                        </strong>
+                                                    </a>
+                                                    <br>
+                                                    <strong>
+                                                        {{ image.age }}
+                                                    </strong>
+                                                    Years Old
+                                                </div>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a href="{% url 'youngartist:submission_vote' pk=image.pk %}" {# class="fancybox" rel="group" #}>
+                                                    <img src="{{ image.image.url }}" class="gallery-artist-image"/><br>
+                                                </a>
+                                                <div class="medium-12 small-12" style="height: 4.5em">
+                                                    <a href="{% url 'youngartist:submission_vote' pk=image.pk %}">
+                                                        <strong>
+                                                            {{ image.artist }}
+                                                        </strong>
+                                                    </a>
+                                                    <br>
+                                                    <strong>
+                                                        {{ image.age }}
+                                                    </strong>
+                                                    Years Old
+                                                </div>
+                                                <div class="medium-12 small-12" style="text-align: right">
+                                                    <img src="{% static 'images/bHeart.png' %}" style="width: 1.2em">
+                                                    <strong>
+                                                        {{ image.likes }}
+                                                    </strong>
+                                                    Vote(s)
+                                                </div>
+                                            </li>
+                                        {% endif %}
+{#										<div style="display: none">#}
+{#											<div id="{{ image.pk }}" class="fancybox-votebox">#}
+{#												<img src="{{ image.image.url }}" />#}
+{#												<div id="submission-bar">#}
+{#													<div class="row event-table">#}
+{#                                                        <h2 class="title">{{ image.title }}</h2>#}
+{#														<div class="small-2 columns" id="bar-4">#}
+{#															<strong>#}
+{#																Artist#}
+{#															</strong>#}
+{#														</div>#}
+{#														<div class="small-10 columns" id="bar-8">#}
+{#															{{ image.artist }}#}
+{#														</div>#}
+{#													</div>#}
+{#													<div class="row event-table">#}
+{#														<div class="small-2 columns" id="bar-4">#}
+{#															<strong>#}
+{#																Age#}
+{#															</strong>#}
+{#														</div>#}
+{#														<div class="small-10 columns" id="bar-8">#}
+{#															{{ image.age }} Years old#}
+{#														</div>#}
+{#													</div>#}
+{#													<div class="row event-table">#}
+{#														<div class="small-2 columns" id="bar-4">#}
+{#															<strong>#}
+{#																Location#}
+{#															</strong>#}
+{#														</div>#}
+{#														<div class="small-10 columns" id="bar-8">#}
+{#															{{ image.location }}#}
+{#														</div>#}
+{#													</div>#}
+{#												</div>#}
+{#												<a class="button right" style="z-index: 9999;" id="sign" href="{% url 'youngartist:submission_vote' pk=image.pk %}" data-popup="true">#}
+{#													VIEW SUBMISSIONS#}
+{#												</a>#}
+{#											</div>#}
+{#										</div>#}
+                                        {# <!-- End of fancybox modal with popup detail submission view --> #}
+									{% endif %}
+								{% endfor %}
+							</ul>
+                            <!-- End of image content generator -->
+							{% if is_paginated %}
+								<div class="pagination">
+									<div class="center paging">
+										{% for page in paginator.page_range %}
+											{% if forloop.counter != 1 %} &emsp; {% endif %}
+											{% if page != page_obj.number %}
+												<div class="pagibox">
+													<a href="?page={{ page }}">
+														{% if page < 10 %}
+															0{{ page }}
+														{% else %}
+															{{ page }}
+														{% endif %}
+													</a>
+												</div>
+											{% else %}
+												<div class="pagibox active">
+                                                    <span>
+                                                        {% if page < 10 %}
+	                                                        0{{ page }}
+                                                        {% else %}
+	                                                        {{ page }}
+                                                        {% endif %}
+                                                    </span>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+							{% endif %}
+                            <!-- End of pagination generator -->
+						{% else %}
+							<h2>
+								Please check back later for submission entries
+							</h2>
+						{% endif %}
+                    </div>
+				</div>
+                <!-- End of content-wrapper for tabs-content gallery -->
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block extra_js %}
+	<script>
+		$(document).foundation({
+			tab: {
+				callback:function (tab) {
+					console.log(tab);
+				}
+			}
+		});
+	</script>
+	<script>
+		$('').on('change', function(){
+		});
+	</script>
+	<script>
+		$(".fancybox").fancybox({
+			width       :  '40%',
+			autoSize    :'false',
+			openEffect  : 'fade',
+			closeEffect : 'fade',
+			afterLoad   : function() {
+				this.content = this.content.html();
+			}
+		});
+		$('#id_location').change(function(){
+			$(this).closest("form").submit()
+		});
+		$('#id_created').change(function(){
+			$(this).closest("form").submit()
+		});
+	</script>
+{% endblock %}

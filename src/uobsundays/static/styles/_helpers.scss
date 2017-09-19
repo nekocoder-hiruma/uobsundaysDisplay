@@ -1,0 +1,57 @@
+.white-bg{
+  background-color:white !important;
+}
+
+.right-white-bg{
+  li{
+    a{
+      background-color:white !important;
+      padding-left:0px !important;
+      padding-right:0px !important;
+    }
+  }
+}
+
+.blue-bg{
+  background-color:#09268A;
+}
+
+.right-blue-bg{
+  li{
+    a{
+      background-color:#09268A !important;
+    }
+  }
+}
+
+.red-text{
+  color:#E62A52 !important;
+}
+
+.blue-text{
+  color:#1652A3 !important;
+}
+
+.cyan-text{
+  color:#40B9D1 !important;
+}
+
+.yellow-text{
+  color:#EED00D !important;
+}
+
+.orange-text{
+  color:#F8A228 !important;
+}
+
+.red-text-alt{
+  color:#E42842 !important;
+}
+
+.global-bg{
+  background-image: url("../images/homepage-1-bg.jpg");
+}
+
+.locate-bg{
+  background-color: white;
+}

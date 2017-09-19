@@ -1,0 +1,670 @@
+/* Core CSS */
+
+/*------------------------------------*/
+/*	FONTS
+/*------------------------------------*/
+@font-face {
+    font-family: 'arimoregular';
+    src: url('../fonts/arimoregular-webfont.eot');
+    src: url('../fonts/arimoregular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/arimoregular-webfont.woff2') format('woff2'),
+         url('../fonts/arimoregular-webfont.woff') format('woff'),
+         url('../fonts/arimoregular-webfont.ttf') format('truetype'),
+         url('../fonts/arimoregular-webfont.svg#arimoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'arimoitalic';
+    src: url('../fonts/arimoitalic-webfont.eot');
+    src: url('../fonts/arimoitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/arimoitalic-webfont.woff2') format('woff2'),
+         url('../fonts/arimoitalic-webfont.woff') format('woff'),
+         url('../fonts/arimoitalic-webfont.ttf') format('truetype'),
+         url('../fonts/arimoitalic-webfont.svg#arimoitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'arimobold_italic';
+    src: url('../fonts/arimobolditalic-webfont.eot');
+    src: url('../fonts/arimobolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/arimobolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/arimobolditalic-webfont.woff') format('woff'),
+         url('../fonts/arimobolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/arimobolditalic-webfont.svg#arimobold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'arimobold';
+    src: url('../fonts/arimobold-webfont.eot');
+    src: url('../fonts/arimobold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/arimobold-webfont.woff2') format('woff2'),
+         url('../fonts/arimobold-webfont.woff') format('woff'),
+         url('../fonts/arimobold-webfont.ttf') format('truetype'),
+         url('../fonts/arimobold-webfont.svg#arimobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'agendaitalic';
+    src: url('../fonts/agendamediumitalic-webfont.eot');
+    src: url('../fonts/agendamediumitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/agendamediumitalic-webfont.woff2') format('woff2'),
+         url('../fonts/agendamediumitalic-webfont.woff') format('woff'),
+         url('../fonts/agendamediumitalic-webfont.ttf') format('truetype'),
+         url('../fonts/agendamediumitalic-webfont.svg#agendaitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'agendamedium';
+    src: url('../fonts/agendamedium-webfont.eot');
+    src: url('../fonts/agendamedium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/agendamedium-webfont.woff2') format('woff2'),
+         url('../fonts/agendamedium-webfont.woff') format('woff'),
+         url('../fonts/agendamedium-webfont.ttf') format('truetype'),
+         url('../fonts/agendamedium-webfont.svg#agendamedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'agendaitalic';
+    src: url('../fonts/agendalightitalic-webfont.eot');
+    src: url('../fonts/agendalightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/agendalightitalic-webfont.woff2') format('woff2'),
+         url('../fonts/agendalightitalic-webfont.woff') format('woff'),
+         url('../fonts/agendalightitalic-webfont.ttf') format('truetype'),
+         url('../fonts/agendalightitalic-webfont.svg#agendaitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'agendaregular';
+    src: url('../fonts/agendalight-webfont.eot');
+    src: url('../fonts/agendalight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/agendalight-webfont.woff2') format('woff2'),
+         url('../fonts/agendalight-webfont.woff') format('woff'),
+         url('../fonts/agendalight-webfont.ttf') format('truetype'),
+         url('../fonts/agendalight-webfont.svg#agendaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'agendabold';
+    src: url('../fonts/agendabold-webfont.eot');
+    src: url('../fonts/agendabold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/agendabold-webfont.woff2') format('woff2'),
+         url('../fonts/agendabold-webfont.woff') format('woff'),
+         url('../fonts/agendabold-webfont.ttf') format('truetype'),
+         url('../fonts/agendabold-webfont.svg#agendabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'agendaregular';
+    src: url('../fonts/agendablack-webfont.eot');
+    src: url('../fonts/agendablack-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/agendablack-webfont.woff2') format('woff2'),
+         url('../fonts/agendablack-webfont.woff') format('woff'),
+         url('../fonts/agendablack-webfont.ttf') format('truetype'),
+         url('../fonts/agendablack-webfont.svg#agendaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/*------------------------------------*/
+/*	HEADER & FOOTER
+/*------------------------------------*/
+
+/* Header wrapper*/
+#topheader {
+  background: white none repeat scroll 0 0;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.15);
+  display: block;
+  height: 63px;
+  margin-top: 0;
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+}
+
+#topheader #header {
+	padding: 15px 20px;
+}
+
+/* Navigation */
+#topheader .top-bar-section ul li a {
+  font-family: AgendaBold,Arial,Helvetica,sans-serif;
+  font-size: 93.8%;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+#topheader .top-bar,
+#topheader .top-bar .top-bar-section ul li,
+#topheader .top-bar .top-bar-section ul li a {
+  background: none;
+}
+#topheader .top-bar .top-bar-section ul {
+  background: white;
+}
+#topheader .top-bar .top-bar-section > ul > li > a{
+  padding-bottom: 21px;
+}
+
+#menu {
+  float: right;
+  list-style-type: none;
+  margin: 3px 0;
+}
+#menu li {
+	display: inline;
+    margin-right: 20px;
+}
+#menu a {
+  font-size: 93.8%;
+  padding-right: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#menu-home {
+  color: #ef4165;
+}
+#topheader .top-bar-section ul li.active a#menu-home, #topheader .top-bar-section ul li a#menu-home:hover {
+  background: rgba(0, 0, 0, 0) url("../images/temp/home.png") no-repeat scroll 30px bottom;
+}
+#menu-event {
+  color: #4fc4d8;
+}
+ul.dropdown li a {
+  color: white !important;
+  font-family: Arimo,Arial,Helvetica,sans-serif !important;
+  font-size: 13px !important;
+  font-weight: normal !important;
+  text-transform: none !important;
+}
+ul.dropdown li {
+  padding: 1px;
+}
+
+#topheader .top-bar .top-bar-section ul li ul.dropdown {
+  background-color: #1A68B3;
+}
+#topheader .top-bar .top-bar-section > ul > li > ul.dropdown > li:hover,
+#topheader .top-bar .top-bar-section > ul > li > ul.dropdown > li.liactive{
+  background-color: #042A7F;
+}
+#topheader .top-bar .top-bar-section ul li ul.dropdown li ul.dropdown{
+  background-color: #042A7F;
+}
+#topheader .top-bar .top-bar-section ul > li > ul.dropdown > li > ul.dropdown > li:hover,
+#topheader .top-bar .top-bar-section ul > li > ul.dropdown > li > ul.dropdown > li.liactive{
+  background-color: #1A68B3 !important;
+}
+ul.dropdown li.liactive > a {
+  color: white !important;
+}
+ul.dropdown {
+  border: 1px solid #9F9F9F;
+}
+ul.dropdown li ul.dropdown {
+  width: 10rem !important;
+}
+
+.top-bar-section .has-dropdown > a:after {
+    border: 0;
+    border-top-style: none;
+}
+#topheader .top-bar-section ul li.active a#menu-event, #topheader .top-bar-section ul li:hover a#menu-event {
+  background: rgba(0, 0, 0, 0) url("../images/temp/icecream.png") no-repeat scroll 30px bottom;
+  padding-bottom: 21px;
+}
+#menu-locate {
+    color: #fcb034;
+}
+#topheader .top-bar-section ul li.active a#menu-locate, #topheader .top-bar-section ul li a#menu-locate:hover {
+  background: rgba(0, 0, 0, 0) url("../images/temp/snail.png") no-repeat scroll center bottom;
+  padding-bottom: 21px;
+}
+.top-bar-section .right li .dropdown li ul {
+  left: 100%;
+  width: auto;
+  top: -1px;
+}
+.top-bar-section > ul > li {
+  width: 7rem !important;
+  margin-left: -35px;
+}
+
+/* Special Footer */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* needed for container min-height */
+  font-size: 16px;
+}
+body > div.off-canvas-wrap {
+  background-position: center 10%;
+}
+.off-canvas-wrap{
+  height: auto !important;
+  min-height: 100%;
+  position: relative !important;
+}
+.inner-wrap {
+  height: auto !important;
+  min-height: 100%;
+  position: relative !important;
+}
+
+.container {
+  position: relative; /* needed for footer positioning*/
+  height: auto !important; /* real browsers */
+  min-height: 100%; /* real browsers */
+}
+
+.footerClass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #00367b;
+}
+#stickyfooter {
+  position: fixed;
+}
+
+/* Footer */
+#footerID .row {
+	padding: 0 20px;
+}
+
+.copyright, .footernav {
+  color: white;
+  font-size: 62.5%;
+  letter-spacing: 0.003em;
+  padding: 8px 20px;
+}
+
+.footernav .links a{
+	text-align:right;
+	color: white;
+}
+.footernav .links {
+  padding: 0;
+}
+
+.footernav {
+    text-align: right;
+}
+
+.footerFB {
+    padding-top: 3px;
+    vertical-align: top;
+    text-align: right;
+
+}
+
+.footermail {
+    padding-top: 4px;
+    display: inline-block;
+}
+
+
+/* END OF HEADER & FOOTER */
+
+
+
+/*------------------------------------*/
+/*	BODY & MAIN CONTENT
+/*------------------------------------*/
+
+body{
+	font-family: "Arimo",Arial, Helvetica, sans-serif!important;
+}
+
+.row > .branch {
+    margin: 0;
+}
+
+/* Background Images */
+.subpages{
+  background:url(../images/temp/body_bg.jpg) no-repeat fixed center 63px;
+}
+.signup{
+  background:url(../images/signup_bg.jpg) no-repeat fixed center 63px !important;
+}
+.bankingsol{
+  background:url(../images/bankingsol_bg.jpg) no-repeat fixed center 63px !important;
+}
+/* End of Background Images */
+
+.main-content {
+    background-position: center center;
+    height: 100%;
+    padding: 63px 20px 80px;
+}
+
+.row.main-content > .pagehead {
+  background: rgba(0, 0, 0, 0) url(../images/temp/twirl-rotate.gif) no-repeat scroll 3% bottom;
+  height: 65px;
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+.row.main-content .pagetitle {
+  padding-left: 88px;
+}
+
+.row.main-content .pagetitle h1 {
+  color: #00367b;
+  font-size: 162.5%;
+  line-height: 2.2em;
+  margin: 0;
+
+}
+.row.main-content .pagetitle h1 .title{
+	font-family: "AgendaBold", Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+}
+.row.main-content .pagetitle h1 .tag{
+	font-family: "AgendaLight", Arial, Helvetica, sans-serif;
+    font-size: 85%;
+}
+
+#sunday {
+    float: right;
+    padding-right: 20px;
+}
+.slick-cloned img,
+.slick-active img
+{
+    margin: auto;
+}
+.slick-dots {
+    bottom: 20px;
+    right: 450px;
+}
+.slick-dots li{
+    margin-right: -3px;
+}
+.slick-dots li button{
+    text-shadow: 2px 0 0 white, -2px 0 0 white, 0 2px 0 white, 0 -2px 0 white, 1px 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+}
+.slick-dots li.slick-active button::before {
+    color: red;
+    opacity: 1;
+}
+.slick-dots li button::before {
+    color: white;
+    opacity: 1;
+    font-size: 0.75rem;
+}
+
+/* Event Content Area */
+.content-wrapper  {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px rgba(24, 24, 24, 0.3);
+  padding: 27px;
+  letter-spacing: 0.002em;
+}
+
+.content-wrapper  ul.tabs{
+	border-bottom:1px solid #cecece;
+}
+
+.content-wrapper  ul.tabs .tab-title a {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  color: #abafb1;
+  font-family: "AgendaLight", "AgendaMedium", Arial, Helvetica, sans-serif;
+  font-size: 93.8%;
+  line-height: 1;
+  padding:0 0 3px 0!important;
+  text-transform: uppercase;
+}
+
+.content-wrapper  ul.tabs .tab-title {
+  margin: 0 10px 25px 10px !important;
+}
+
+
+.content-wrapper  ul.tabs .tab-title.active a {
+  color: #ed1c24;
+  font-family: "AgendaBold",Arial,Helvetica,sans-serif;
+  border-bottom: 2px solid #ed1c24;
+  padding-bottom: 3px;
+}
+
+.content-wrapper  ul.tabs .tab-title.separator {
+  color: #abafb1;
+  margin-top: -4px !important;
+}
+
+.content-wrapper  .wrapper {
+  padding-right: 2.5em;
+  text-align: justify;
+}
+
+
+.content-wrapper  .tabs-content h2{
+	font-size: 125%;
+	font-family: "AgendaLight", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #00367b;
+}
+
+.content-wrapper  .tabs-content p{
+	font-size: 81.3%;
+	color:#505050;
+}
+.content-wrapper  .tabs-content{
+	margin:0;
+}
+
+/* OVERVIEW - PARAGRAPH */
+#sign.button {
+  background: #00367b none repeat scroll 0 0;
+  font-family: "AgendaLight", "AgendaMedium",Arial,Helvetica,sans-serif;
+  font-size: 106.3%;
+  letter-spacing: 0.4px;
+  margin: 0 0 20px 0;
+  padding: 9px 20px;
+  color: white !important;
+}
+
+/* OVERVIEW - EVENT DETAILS */
+#table-start {
+  background-color: #feda2a;
+  color: #f15b28;
+  font-family: "AgendaLight", "AgendaMedium", Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  padding: 7px 22px 5px;
+  text-transform: uppercase;
+}
+#info-bar {
+  background-color: #f3f1d1;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+#info-bar #bar-4 {
+  color: #8d8c81;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+  padding-left: 7px;
+  font-size: 75%
+}
+#info-bar #bar-8 {
+  font-size: 75%;
+}
+
+/* SIGN UP DETAILS */
+#signup-schedule {
+  margin-top: 2.5rem;
+  color: #505050;
+  font-family: "AgendaLight", "AgendaMedium", Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+#signup-schedule p {
+  margin-bottom: 0;
+  font-size: 100%;
+}
+/* Filter dropdown CSS codes */
+
+.filter-text {
+    font-size: 70%;
+    padding-top: 3%;
+}
+
+.filter-select {
+    background-color: transparent;
+    border-color: transparent;
+    height: 20%;
+    width: 80%;
+    font-size: 70%;
+    color: #003778;
+    font-weight: bold;
+}
+
+.filter-select:hover {
+    border-color: transparent;
+}
+
+/* Pagination CSS codes & Events Gallery*/
+.pagination .arrow {
+    display: none;
+}
+
+.paging .pagibox span {
+    color: white;
+}
+.paging .pagibox a {
+    color: black;
+}
+.pagibox {
+  background-color: #f4f4f4 !important;
+  line-height: 30px;
+  float: left;
+  margin-right: 3px;
+}
+.paging .active {
+  background-color: #00367c !important;
+
+}
+.paging .pagibox span,
+.paging .pagibox a{
+  border-bottom: none;
+  font-family: "AgendaLight", Arial, Helvetica, sans-serif;
+  padding: 12px 13px;
+}
+/* BANKING SOLUTIONS */
+
+#promotions p {
+  margin-left: -10px;
+  margin-bottom: 0px;
+}
+#promotions a img {
+  height: auto;
+  width: 150px;
+}
+
+/* END OF BODY & MAIN CONTENT*/
+
+/*	BODY & MAIN CONTENT (LOCATE US)
+/*------------------------------------*/
+
+.branch h5{
+   font-family: "AgendaBold", Arial, Helvetica, sans-serif;
+   color:#00367b;
+   letter-spacing: 0.06em;
+   font-size: 125%;
+}
+
+.time {
+    font-family: "Arimo", Arial, Helvetica, sans-serif !important;
+    font-size: 80%;
+    color:#363636;
+    position: relative;
+	right:11px;
+    bottom: 8px;
+}
+.time1 {
+    font-family: "Arimo", Arial, Helvetica, sans-serif !important;
+    font-size: 80%;
+    color:#363636;
+    position: relative;
+    bottom: 8px;
+}
+
+.branch h6 {
+    font-family: "AgendaBold", Arial, Helvetica, sans-serif;
+    color: #414141;
+    letter-spacing: 0.04em;
+}
+.branch p{
+    line-height: 1.2em;
+    margin-bottom: 7px;
+    font-size: 80%;
+}
+.otherbranches{
+  font-family: "AgendaLight", Arial, Helvetica, sans-serif;
+  font-size: 135%;
+  letter-spacing: 1px;
+  left: 8px;
+  padding-top: 10px;
+  margin-left: -5px;
+}
+
+/* Google maps CSS styling for responsive */
+
+.google-maps iframe {
+    width:100%;
+    max-width: 100%;
+}
+

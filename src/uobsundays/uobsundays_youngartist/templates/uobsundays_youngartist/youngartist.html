@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    UOB Sundays | Contest
+{% endblock %}
+{% block contestsmenu %}
+    active
+{% endblock %}
+{% block contest-june-base %}
+    liactive
+{% endblock %}
+{% block contests-june-overview %}
+    liactive
+{% endblock %}
+{% block bodyclass %}
+    submissions
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+                        &nbsp;
+                    <!--<span class="tag">-->
+                        <!--Young Artist-->
+                    <!--</span>-->
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <ul class="tabs" data-options="scroll_to_content: false">
+                <li class="tab-title active">
+                    <a href="{% url 'youngartist:index' %}">
+                        Overview
+                    </a>
+                </li>
+                <li class="tab-title separator">
+                    |
+                </li>
+                <li class="tab-title">
+                    <a href="{% url 'youngartist:submission' %}">
+                        Submissions
+                    </a>
+                </li>
+{#				<li class="tab-title separator">#}
+{#					|#}
+{#				</li>#}
+{#				<li class="tab-title">#}
+{#					<a href="{% url 'youngartist:shortlisted' %}">#}
+{#						Shortlisted Entries#}
+{#					</a>#}
+{#				</li>#}
+                <li class="tab-title separator">
+                    |
+                </li>
+                <li class="tab-title">
+                    <a href="{% url 'youngartist:winners' %}">
+                        Winners
+                    </a>
+                </li>
+            </ul>
+            <div class="tabs-content">
+                <div class="content active" id="overview">
+                    <div class="small-12 columns show-for-small-only event-pic">
+                        <div class="row">
+                            <img id="event" src="{% static 'images/eventimg-july.jpg' %}">
+                            <div id="young-artist-table">
+                                EVENT DETAILS
+                            </div>
+                            <div class="row" id="signup-schedule">
+                                {% if contents %}
+                                    {% for content in contents %}
+                                        <div class="row event-table">
+                                            <div class="small-3 columns" id="bar-4">
+                                                <strong>
+                                                    Place
+                                                </strong>
+                                            </div>
+                                            <div class="small-9 columns" id="bar-8">
+                                                {{ content.Contest_Detail_Place|safe }}
+                                            </div>
+                                        </div>
+                                        <div class="row event-table">
+                                            <div class="small-3 columns" id="bar-4">
+                                                <strong>
+                                                    Dates
+                                                </strong>
+                                            </div>
+                                            <div class="small-9 columns" id="bar-8">
+                                                {{ content.Contest_Detail_Date|safe }}
+                                            </div>
+                                        </div>
+                                        <div class="row event-table">
+                                            <div class="small-3 columns" id="bar-4">
+                                                <strong>
+                                                    Sessions
+                                                </strong>
+                                            </div>
+                                            <div class="small-9 columns" id="bar-8">
+                                                {{ content.Contest_Detail_Session|safe }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 medium-8 wrapper left mobile">
+                        {% if contents %}
+                            {% for content in contents %}
+                                <h2>
+                                    {{ content.header }}
+                                </h2>
+                                {{ content.content | safe }}
+                                <div class="medium-12 left">
+                                    <img class="left medium-2" src="{% static 'images/sign-up.png' %}">
+                                    <div class="right medium-9">
+                                        <h2>
+                                            Participate
+                                        </h2>
+                                        {{ content.Sign_Up | safe }}
+                                        <p style="color: red;">
+                                            PRE-REGISTRATION IS FULL
+                                        </p>
+	                                    <hr>
+                                    </div>
+                                </div>
+{#                                <div class="medium-12 left">#}
+{#                                    <img class="left medium-2" src="{% static 'images/judging.png' %}">#}
+{#                                    <div class="right medium-9">#}
+{#                                        <h2>#}
+{#                                            Judging#}
+{#                                        </h2>#}
+{#                                        {{ content.Judging | safe }}#}
+{#	                                    <hr>#}
+{#                                    </div>#}
+{#                                </div>#}
+                                <div class="medium-12 left">
+                                    <img class="left medium-2" src="{% static 'images/vote.png' %}">
+                                    <div class="right medium-9">
+                                        <h2>
+                                            Winning Criteria
+                                        </h2>
+                                        {{ content.Vote | safe }}
+{#                                        <a class="button" id="sign" href="{% url 'youngartist:shortlisted' %}" data-popup="true">#}
+{#                                            VIEW SHORTLISTED ENTRIES#}
+{#                                        </a>#}
+	                                    <hr>
+                                    </div>
+                                </div>
+                                <div class="medium-12 left">
+                                    <img class="left medium-2" src="{% static 'images/winners.png' %}">
+                                    <div class="right medium-9">
+                                        <h2>
+                                            Prizes for Winners
+                                        </h2>
+                                        <img style="width: 100%" src="{% static 'images/digitalart-prizes.png' %}">
+                                        <div class="left">
+                                            <small style="display:block; line-height: 0.8rem; margin-top: 10px;">
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="medium-12 left" style="margin-top: 10px;">
+                                    <i style="font-size:10px;">
+                                        *Cash prizes will be credited into the winners' UOB Junior Savers Accounts. Click <a href="https://www.uobsundays.com/static/PDFs/Contest%20Rules.pdf"> here</a> for more details.
+                                    </i>
+                                </p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="medium-4 columns show-for-medium-up">
+                        <div class="row" id="signup-schedule">
+                            <img id="event" src="{% static 'images/contestoverview.jpeg' %}">
+                            <div id="young-artist-table">
+                                EVENT DETAILS
+                            </div>
+                            {% if contents %}
+                                {% for content in contents %}
+                                    <div class="row" id="info-bar">
+                                        <div class="row event-table">
+                                            <div class="small-3 columns" id="bar-4">
+                                                <strong>
+                                                    Venues
+                                                </strong>
+                                            </div>
+                                            <div class="small-9 columns" id="bar-8">
+                                                {{ content.Contest_Detail_Place|safe }}
+                                            </div>
+                                        </div>
+                                        <div class="row event-table">
+                                            <div class="small-3 columns" id="bar-4">
+                                                <strong>
+                                                    Dates
+                                                </strong>
+                                            </div>
+                                            <div class="small-9 columns" id="bar-8">
+                                                {{ content.Contest_Detail_Date|safe }}
+                                            </div>
+                                        </div>
+                                        <div class="row event-table">
+                                            <div class="small-3 columns" id="bar-4">
+                                                <strong>
+                                                    Sessions
+                                                </strong>
+                                            </div>
+                                            <div class="small-9 columns" id="bar-8">
+                                                {{ content.Contest_Detail_Session|safe }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).foundation({
+            tab: {
+                callback: function(tab){
+                    console.log(tab);
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

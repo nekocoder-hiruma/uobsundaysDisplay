@@ -1,0 +1,40 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* needed for container min-height */
+
+}
+.container {
+  position: relative; /* needed for footer positioning*/
+  height: auto !important; /* real browsers */
+  min-height: 100%; /* real browsers */
+}
+
+#footerID {
+  position: absolute;
+  width: 100%;
+  bottom: 0; /* stick to bottom */
+  background: #00367b;
+}
+
+/* Footer */
+#footerID .row {
+	padding: 0 20px;
+}
+
+.copyright, .footernav {
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0.03px;
+  line-height: 3.2;
+  padding: 0 20px;
+}
+
+.footernav .links a{
+	text-align:right;
+	color: #fff;
+}
+.footernav .links {
+  padding: 0 6px;
+}

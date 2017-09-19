@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contestsmenu %}
+    active
+{% endblock %}
+{% block bodyclass %}
+    submissions
+{% endblock %}
+{% block og-title %}
+    UOBSundays - The Little Art Contest
+{% endblock %}
+{% block og-description %}
+    {{ youngartistsubmission.artist }}
+{% endblock %}
+{% block og-image %}
+    {{ youngartistsubmission.image.url }}
+{% endblock %}
+{% block og-url %}
+    https://www.uobsundays.com{{ request.path }}
+{% endblock %}
+{% block extra_metatags %}
+    <link rel="canonical" href="https://www.uobsundays.com{{ request.path }}" />
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+                    &nbsp;
+                    <span class="tag">
+                        The Little Art Contest
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                <span class="title">
+                    CONTEST
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <img src="{{ youngartistsubmission.image.url }}">
+            <div id="submission-bar">
+                <div class="row event-table">
+                    <div class="left" id="info-tab-table">
+                        <h4 class="row drawing-title">
+                            {{ youngartistsubmission.title }}
+                        </h4>
+                        <div class="row event-table">
+                            <div class="vote-description medium-4 small-4 column" id="bar-4">
+                                <strong>
+                                    Artist
+                                </strong>
+                            </div>
+                            <div class="vote-content medium-4 small-4 column left" id="bar-8">
+                                {{ youngartistsubmission.artist }}
+                            </div>
+                        </div>
+                        <div class="row event-table">
+                            <div class="vote-description medium-4 small-4 column" id="bar-4">
+                                <strong>
+                                    Age
+                                </strong>
+                            </div>
+                            <div class="vote-content medium-4 small-4 column left" id="bar-8">
+                                {{ youngartistsubmission.age }} Years old
+                            </div>
+                        </div>
+                        <div class="row event-table">
+                            <div class="vote-description medium-4 small-4 column" id="bar-4">
+                                <strong>
+                                    Location
+                                </strong>
+                            </div>
+                            <div class="vote-content medium-4 small-4 column left" id="bar-8">
+                                {{ youngartistsubmission.location }}
+                            </div>
+                        </div>
+                        <div class="event-table left vote-share">
+                            <div class="row event-table share-table">
+                                <div class="vote-description medium-4 small-4 column" id="bar-4">
+                                    <strong>
+                                        Share
+                                    </strong>
+                                </div>
+                                <div class="medium-4 small-4 column" id="share-mail-content">
+                                    <div class="fb-share-button left" data-href="https://www.uobsundays.com{% url 'youngartist:submission_vote' youngartistsubmission.id %}" data-layout="button_count" id="shortlisted">
+                                    </div>
+                                    <a href="mailto:?subject=<UOB Sunday Banking> Support this little artist and vote from 1 to 7 December 2015! &amp;body=Hi! Please visit https://www.uobsundays.com{% url 'youngartist:submission_vote' youngartistsubmission.id %} and vote for this little artist from 1 to 7 December 2015!"
+                                       title="Share by Email" class="footermail right">
+                                        <img src="{% static 'images/icon-email.png' %}" style="margin-top: -5px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Vote-share div -->
+                    </div>
+                    <!-- End of detailed submission view -->
+                    <div class="right text-right">
+                        {% if youngartistsubmission.artist != 'Karin Lee Si Qi' %}
+                            <img id="bar-4" class="heart" src="{% static 'images/bHeart.png' %}">
+                            <span id="likes">
+                                <strong>
+                                    {{ youngartistsubmission.likes }}
+                                </strong>
+                            </span>
+                            <span id="likes">
+                                Vote(s)
+                            </span>
+                        {% endif %}
+{#                        {% if user and not user.is_anonymous %}#}
+{#                            {% if user.has_voted_recently == False or user.first_time_vote %}<br>#}
+{#                                <a class="ui-button button small" id="vote-button" href="{{ request.path|cut:'option%3Dthank'|cut:'option%3Dfail' }}vote">#}
+{#                                    Vote for {{ youngartistsubmission.artist }} now!#}
+{#                                </a>#}
+{#                                <br>#}
+{#                                Note: Each facebook account are only allowed 1 vote per day.#}
+{#                            {% else %}#}
+{#                                <br>#}
+{#                                <span style="color: red;">#}
+{#                                    You have voted today. <br>#}
+{#                                    Please try again tomorrow!#}
+{#                                </span>#}
+{#                            {% endif %}#}
+{#                        {% else %}#}
+{#                            <div id="vote-button">#}
+{#                                <div>#}
+{#                                    <a onclick="return popitup('{% url 'social:begin' 'facebook' %}?next={{request.get_full_path|cut:'option%3Dthank'|cut:'option%3Dfail'|cut:'option%3Dlogin'|cut:'#_=_' }}vote')" href="{% url 'social:begin' 'facebook' %}?next={{request.get_full_path|cut:'option%3Dthank'|cut:'option%3Dfail'|cut:'option%3Dlogin'|cut:'#_=_' }}vote">#}
+{#                                        <img src="{% static 'images/facebook-signin.png' %}">#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                                <div>#}
+{#                                    <a onclick="return popitup('{% url 'social:begin' 'google-plus' %}?next={{request.get_full_path|cut:'option%3Dthank'|cut:'option%3Dfail'|cut:'option%3Dlogin'|cut:'#_=_' }}vote')" href="{% url 'social:begin' 'google-plus' %}?next={{request.get_full_path|cut:'option%3Dthank'|cut:'option%3Dfail'|cut:'option%3Dlogin'|cut:'#_=_' }}vote">#}
+{#                                        <img src="{% static 'images/google-signin.png' %}">#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endif %}#}
+                    </div>
+                </div>
+                <!-- End of event-table div -->
+            </div>
+            <!-- End of submission-bar div -->
+        </div>
+        <!-- End of content wrapper div -->
+{#        <div class="fancybox-overlay fancybox-overlay-fixed boxes" id="thank" style="display: none; width: auto; height: auto;">#}
+{#            <div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened thankbox" tabindex="-1">#}
+{#                <div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;">#}
+{#                    <div class="fancybox-outer">#}
+{#                        <div class="fancybox-inner" style="overflow: auto; width: auto; height: 205px;">#}
+{#                            <h2>#}
+{#                                Thank you for your vote!#}
+{#                            </h2>#}
+{#                            <p>#}
+{#                                You may only vote once a day, you can return to vote again tomorrow.#}
+{#                                Get your friends to vote by sharing this on your Facebook or via email!#}
+{#                            </p>#}
+{#                            <a class="ui-button button small" id="sign">#}
+{#                                CLOSE#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- End of Thank you vote modal -->#}
+{#        <div class="fancybox-overlay fancybox-overlay-fixed boxes" id="fail" style="display: none; width: auto; height: auto;">#}
+{#            <div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened thankbox" tabindex="-1">#}
+{#                <div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;">#}
+{#                    <div class="fancybox-outer">#}
+{#                        <div class="fancybox-inner" style="overflow: auto; width: auto; height: 200px;">#}
+{#                            <h2>#}
+{#                                Sorry!#}
+{#                            </h2>#}
+{#                            <p>#}
+{#                                Each account is only allowed to submit one vote per day.<br>#}
+{#                                Please come back tomorrow to support your favourite entry.#}
+{#                            </p>#}
+{#                            <a class="ui-button button small" id="sign">#}
+{#                                CLOSE#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- End of Sorry vote modal -->#}
+{#        <div class="fancybox-overlay fancybox-overlay-fixed boxes" id="login" style="display: none; width: auto; height: auto;">#}
+{#            <div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened thankbox" tabindex="-1">#}
+{#                <div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;">#}
+{#                    <div class="fancybox-outer">#}
+{#                        <div class="fancybox-inner" style="overflow: auto; width: auto; height: 200px;">#}
+{#                            <h2>#}
+{#                                Sorry!#}
+{#                            </h2>#}
+{#                            <p>#}
+{#                                You have to log in to vote.<br>#}
+{#                                Please try again.#}
+{#                            </p>#}
+{#                            <a class="ui-button button small" id="sign">#}
+{#                                CLOSE#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- End of Restricted vote modal -->#}
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var option = 'coke';
+            var url = window.location.href;
+            option = url.match(/option=(.*)/)[1];
+            showDiv(option);
+        })
+        function showDiv(option) {
+            $('.boxes').hide();
+            $('#' + option).show();
+        }
+    </script>
+
+    <script>
+        $("a#sign").click(function() {
+            $('.boxes').remove();
+        });
+    </script>
+    <script type="text/javascript">
+        if ( (location.hash == "#_=_" || location.href.slice(-1) == "#_=_" || location.hash == "#" || location.href.slice(-1) == "#") ) {
+            removeHash();
+        }
+        function removeHash() {
+            var scrollV, scrollH, loc = window.location;
+            if ('replaceState' in history) {
+                history.replaceState('', document.title, loc.pathname + loc.search);
+            } else {
+                // Prevent scrolling by storing the page's current scroll offset
+                scrollV = document.body.scrollTop;
+                scrollH = document.body.scrollLeft;
+                loc.hash = '';
+                // Restore the scroll offset, should be flicker free
+                document.body.scrollTop = scrollV;
+                document.body.scrollLeft = scrollH;
+            }
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+        function popitup(url) {
+            var left  = ($(window).width()/2)-(400/2);
+            var newwindow = window.open(url, '{{title}}', "height=700,width=400,left=" + left);
+            if (window.focus) {newwindow.focus()}
+            return false;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	UOB Sundays | Events
+{% endblock %}
+{% block contestsmenu %}
+	active
+{% endblock %}
+{% block contest-june-base %}
+	liactive
+{% endblock %}
+{% block contests-june-winners %}
+	liactive
+{% endblock %}
+{% block bodyclass %}
+	submissions
+{% endblock %}
+{% block content %}
+	<div class="row main-content">
+		<div class="row pagehead">
+			<div class="medium-9 columns pagetitle show-for-medium-up">
+				<h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+					&nbsp;
+                    <span class="tag">
+                        The Little Art Contest
+                    </span>
+				</h1>
+			</div>
+			<div class="small-6 columns pagetitle show-for-small-only">
+				<h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+				</h1>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<a href="{% url 'website:index' %}">
+					<img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+				</a>
+			</div>
+		</div>
+		<div class="content-wrapper">
+			<ul class="tabs" data-options="scroll_to_content: false">
+				<li class="tab-title">
+					<a href="{% url 'youngartist:index' %}">
+						Overview
+					</a>
+				</li>
+				<li class="tab-title separator">
+					|
+				</li>
+				<li class="tab-title">
+					<a href="{% url 'youngartist:submission' %}">
+						Submissions
+					</a>
+				</li>
+				<li class="tab-title separator">
+					|
+				</li>
+{#				<li class="tab-title">#}
+{#					<a href="{% url 'youngartist:shortlisted' %}">#}
+{#						Shortlisted Entries#}
+{#					</a>#}
+{#				</li>#}
+{#				<li class="tab-title separator">#}
+{#					|#}
+{#				</li>#}
+				<li class="tab-title active">
+					<a href="{% url 'youngartist:winners' %}">
+						Winners
+					</a>
+				</li>
+			</ul>
+			<div class="tabs-content">
+				<div class="content active">
+					<div class="row show-for-medium-up">
+						{% if winners %}
+							<div class="medium-6 small-6 columns">
+								<p class="winners-title">
+									<strong>
+										Category A
+									</strong>
+                                    <span>
+                                        Winners
+                                    </span>
+									(4 - 7 years old)
+								</p>
+							</div>
+							<div class="medium-6 small-6 columns">
+								<p class="winners-title">
+									<strong>
+										Category B
+									</strong>
+                                    <span>
+                                        Winners
+                                    </span>
+									(8 - 12 years old)
+								</p>
+							</div>
+							<div class="row">
+                                {% for winner in winners %}
+									<div class="small-6 columns winners-tab">
+										<div class="small-5 columns">
+											{% if winner.artist_photo %}
+												<a href="{% url 'youngartist:winners-detail' pk=winner.pk %}">
+                                                    <img src="{{ winner.artist_photo.url }}">
+                                                </a>
+											{% endif %}
+										</div>
+										<div class="small-7 columns winners-info">
+											{% if winner.prize == 'First Prize' %}
+												<p class="prize-tab">
+													<span>
+														1st Prize
+													</span>
+													- S$1,500*
+												</p>
+											{% elif winner.prize == 'Second Prize' %}
+												<p class="prize-tab">
+													<span>
+														2nd Prize
+													</span>
+													- S$1,000*
+												</p>
+											{% elif winner.prize == 'Third Prize' %}
+												<p class="prize-tab">
+													<span>
+														3rd Prize
+													</span>
+													- S$500*
+												</p>
+											{% else %}
+											{% endif %}
+											<p class="prize-title">
+												<a href="{% url 'youngartist:winners-detail' pk=winner.pk %}">
+                                                    {{ winner.title }}
+                                                </a>
+											</p>
+											<p>
+												{{ winner.artist }}
+											</p>
+											<p>
+												{{ winner.artist_age }} years old
+											</p>
+{#											<p>#}
+{#												<img id="bar-4" src="{% static 'images/heart.png' %}">#}
+{#												{{ winner.number_of_likes }} likes#}
+{#											</p>#}
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						{% else %}
+							No winners yet!
+						{% endif %}
+						<div class="row winners-note">
+							<small>
+								*Cash prizes will be credited into the winners' UOB Junior Savers Accounts.
+							</small>
+						</div>
+					</div>
+                    {# for mobile #}
+                    <div class="row show-for-small-only">
+						{% if winners %}
+							<div class="small-12 columns">
+								<p class="winners-title-mobile winners-title">
+									<strong>
+										Category A
+									</strong><br>
+                                    <span>
+                                        Winners
+                                    </span>
+									(4 - 7 years old)
+								</p>
+							</div>
+							<div class="row">
+								{% for winner in winners %}
+                                {% if winner.category == 'Category A' %}
+									<div class="small-12 columns winners-tab">
+										<div class="small-12 columns">
+											{% if winner.artist_photo %}
+												<img src="{{ winner.artist_photo.url }}">
+											{% endif %}
+										</div>
+										<div class="small-12 columns winners-info">
+											{% if winner.prize == 'First Prize' %}
+												<p class="prize-tab">
+													<span>
+														1st Prize
+													</span>
+													- S$1,500*
+												</p>
+											{% elif winner.prize == 'Second Prize' %}
+												<p class="prize-tab">
+													<span>
+														2nd Prize
+													</span>
+													- S$1,000*
+												</p>
+											{% elif winner.prize == 'Third Prize' %}
+												<p class="prize-tab">
+													<span>
+														3rd Prize
+													</span>
+													- S$500*
+												</p>
+											{% else %}
+											{% endif %}
+											<p class="prize-title">
+												{{ winner.title }}
+											</p>
+											<p>
+												{{ winner.artist }}
+											</p>
+											<p>
+												{{ winner.artist_age }} years old
+											</p>
+{#											<p>#}
+{#												<img id="bar-4" src="{% static 'images/heart.png' %}">#}
+{#												{{ winner.number_of_likes }} likes#}
+{#											</p>#}
+										</div>
+									</div>
+                                {% endif %}
+								{% endfor %}
+							</div>
+							<div class="small-12 columns">
+								<p class="winners-title-mobile winners-title">
+									<strong>
+										Category B
+									</strong><br>
+                                    <span>
+                                        Winners
+                                    </span>
+									(8 - 12 years old)
+								</p>
+							</div>
+							<div class="row">
+								{% for winner in winners %}
+                                {% if winner.category == 'Category B' %}
+									<div class="small-12 columns winners-tab">
+										<div class="small-12 columns">
+											{% if winner.artist_photo %}
+												<img src="{{ winner.artist_photo.url }}">
+											{% endif %}
+										</div>
+										<div class="small-12 columns winners-info">
+											{% if winner.prize == 'First Prize' %}
+												<p class="prize-tab">
+													<span>
+														1st Prize
+													</span>
+													- S$1,500*
+												</p>
+											{% elif winner.prize == 'Second Prize' %}
+												<p class="prize-tab">
+													<span>
+														2nd Prize
+													</span>
+													- S$1,000*
+												</p>
+											{% elif winner.prize == 'Third Prize' %}
+												<p class="prize-tab">
+													<span>
+														3rd Prize
+													</span>
+													- S$500*
+												</p>
+											{% else %}
+											{% endif %}
+											<p class="prize-title">
+												{{ winner.title }}
+											</p>
+											<p>
+												{{ winner.artist }}
+											</p>
+											<p>
+												{{ winner.artist_age }} years old
+											</p>
+{#											<p>#}
+{#												<img id="bar-4" src="{% static 'images/heart.png' %}">#}
+{#												{{ winner.number_of_likes }} likes#}
+{#											</p>#}
+										</div>
+									</div>
+                                {% endif %}
+								{% endfor %}
+							</div>
+						{% else %}
+							No winners yet!
+						{% endif %}
+						<div class="row winners-note">
+							<small>
+								*Cash prizes will be credited into the winners' UOB Junior Savers Accounts.
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block extra_js %}
+	<script>
+		$(document).foundation({
+			tab: {
+				callback: function(tab){
+					console.log(tab);
+				}
+			}
+		});
+	</script>
+{% endblock %}

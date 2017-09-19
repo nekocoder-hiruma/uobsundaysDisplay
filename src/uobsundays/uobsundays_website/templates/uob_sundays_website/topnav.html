@@ -1,0 +1,56 @@
+{% load static %}
+{% block header %}
+<script type="text/javascript">
+    $(function() {
+        // this will get the full URL at the address bar
+        var url = window.location.href;
+
+        // passes on every "a" tag
+        $("nav a").each(function() {
+            // checks if its the same on the address bar
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+            }
+        });
+    });
+
+
+</script>
+
+<div class="row">
+	<div class="left logo">
+		<a href="# title="UOB" target="_blank"><img id="logo" src="{% static 'images/uob.png' %}"></a>
+    </div>
+
+    <!-- Mobile Responsive -->
+    <nav class="top-bar right show-for-medium-down" data-topbar role="navigation" data-options="is_hover: false">
+      <ul class="title-area">
+        <li class="name">
+          <h1><!--<a href="#">My Site</a>--></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span><!--Menu--></span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+           <li><a id="menu-home" href="{% url 'website:index' %}">Home</a></li>
+            <li><a id="menu-event" href="{% url 'events:index' %}">Events</a></li>
+            <li><a id="menu-locate"  href="{% url 'website:locate_us' %}">Locate Us</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <!-- Desktop Navigation -->
+    <nav class="top-bar right show-for-large-up" data-topbar role="navigation" data-options="is_hover: false">
+      <section class="top-bar-section">
+        <ul class="right">
+           <li><a id="menu-home" href="{% url 'website:index' %}">Home</a></li>
+            <li><a id="menu-event" href="{% url 'events:index' %}">Events</a></li>
+            <li><a id="menu-locate"  href="{% url 'website:locate_us' %}">Locate Us</a></li>
+        </ul>
+      </section>
+    </nav>
+
+</div>
+{% endblock %}

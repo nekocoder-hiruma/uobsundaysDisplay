@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contestsmenu %}
+    active
+{% endblock %}
+{% block bodyclass %}
+    submissions
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                    <span class="title">
+                        CONTEST
+                    </span>
+                    &nbsp;
+                    <span class="tag">
+                        The Little Art Contest
+                    </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                <span class="title">
+                    CONTEST
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <img src="{{ youngartistwinner.artist_photo.url }}">
+            <div id="submission-bar">
+                <div class="row event-table">
+                    <div class="left" id="info-tab-table">
+                        <h4 class="row drawing-title">
+                            {{ youngartistwinner.title }}
+                        </h4>
+                        <div class="row event-table">
+                            <div class="vote-description medium-4 small-4 column" id="bar-4">
+                                <strong>
+                                    Artist
+                                </strong>
+                            </div>
+                            <div class="vote-content medium-4 small-4 column left" id="bar-8">
+                                {{ youngartistwinner.artist }}
+                            </div>
+                        </div>
+                        <div class="row event-table">
+                            <div class="vote-description medium-4 small-4 column" id="bar-4">
+                                <strong>
+                                    Age
+                                </strong>
+                            </div>
+                            <div class="vote-content medium-4 small-4 column left" id="bar-8">
+                                {{ youngartistwinner.artist_age }} Years old
+                            </div>
+                        </div>
+                        <div class="row event-table">
+                            <span class="tag" style="font-size: 1.2em">
+                                <a href="{% url 'youngartist:winners' %}">
+                                    Back to winners page
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

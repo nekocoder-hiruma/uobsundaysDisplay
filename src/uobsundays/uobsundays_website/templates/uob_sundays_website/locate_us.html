@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block locatemenu %}
+    active
+{% endblock %}
+{% block bodyclass %}
+    subpages
+{% endblock %}
+{% block content %}
+    <div class="row main-content">
+        <div class="row pagehead">
+            <div class="medium-9 columns pagetitle show-for-medium-up">
+                <h1>
+                <span class="title">
+                    Locate Us
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 columns pagetitle show-for-small-only">
+                <h1>
+                <span class="title">
+                    Locate Us
+                </span>
+                </h1>
+            </div>
+            <div class="small-6 medium-3 columns">
+                <a href="{% url 'website:index' %}">
+                    <img id="sunday" src="{% static 'images/sunday-fundays.png' %}">
+                </a>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="tabs-content columns">
+                <div class="row branch">
+                    <h2>
+                        Opening Hours on Sundays
+                    </h2>
+                    <p>
+                        With selected UOB branches open on Sundays, you can now bank at your convenience.<br>
+                        These branches now offer a range of banking and financial advisory services to suit your lifestyle needs.
+                    </p>
+                </div>
+            </div>
+            <div class="row branch">
+                {% for branch in branches %}
+                    {% if branch.branches == 'M' %}
+                        <div class="small-12 medium-6 columns north">
+                            {% if branch.map %}
+                                <div class="google-maps">
+                                    <iframe src="{{ branch.map|safe }}" width="430" height="200" frameborder="0" style="border:0"></iframe>
+                                </div>
+                            {% endif %}
+                            <h5>
+                                {{ branch.name }}
+                            </h5>
+                            {{ branch.content | safe }}
+                        </div >
+                    {% endif %}
+                {% endfor %}
+            </div><!--row branch-->
+            <div class="row branch">
+                <div class="medium-12 columns otherbranches">
+                    <h4 class="otherbranches">
+                        Other Branches
+                    </h4>
+                </div>
+                <div class="row branch">
+                    {% for branch in branches %}
+                        {% if branch.branches == 'O' %}
+                            <div class="small-12 medium-6 columns north">
+                                {% if branch.map %}
+                                    <div class="google-maps">
+                                        <iframe src="{{ branch.map|safe }}" width="430" height="200" frameborder="0" style="border:0"></iframe>
+                                    </div>
+                                {% endif %}
+                                <h5>{{ branch.name }}</h5>
+                                {{ branch.content | safe }}
+                                <p>
+                                    <i style="font-size:9px;">*Please note that Account Opening and Counter Services are not available on Sundays.</i>
+                                </p>
+                            </div >
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div><!--branch-->
+        </div><!--/content-wrapper-->
+    </div><!--row main contents-->
+{% endblock %}

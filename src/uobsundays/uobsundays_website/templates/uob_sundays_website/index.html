@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block homemenu %}
+    active
+{% endblock %}
+{% block content %}
+    <div id="homepage-wrapper" class="main-content">
+        <div id="slider">
+            {% for image in images %}
+                <div>
+                    <a href="http://{{ image.link|cut:"http://" }}">
+                        <img src="{{ image.fg.url }}" />
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+<div class="seal" style="background-image: 'url{% static 'images/sealmark.png' %}';">
+</div>
+{% endblock %}
+{% block footerclass %}
+    footerClass
+{% endblock %}
+{% block extra_js %}
+    <script>
+
+        (function initFoundation(){
+            $(document).foundation();
+        }());
+
+        $('.seal').css({
+            'background-image': 'url("{% static 'images/sealmark.png' %}")'
+        });
+
+        (function homepageControls(){
+            var image_num = 1;
+            {% for image in images %}
+                {% if forloop.first %}
+                    $('body > div.off-canvas-wrap').css({
+                        'background-image': 'url("{{ image.bg.url|safe }}")'
+                    });
+                {% endif %}
+            {% endfor %}
+            $('#slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 7000,
+                speed: 1000,
+                arrows: false,
+                dots: true
+            }).on('beforeChange', function(){
+                {% for image in images %}
+                    {% if forloop.counter == 2 %}
+                        if(image_num === 1){
+                        $('body > div.off-canvas-wrap').css({
+                            'background-image': 'url("{{ image.bg.url|safe }}")'
+                        });
+                        image_num = 2;
+                    }
+                    {% endif %}
+                {% endfor %}
+
+            {% for image in images %}
+                {% if forloop.first %}
+                {% elif forloop.counter == 2 %}
+                {% elif forloop.counter == 3 %}
+                    else if (image_num == ({{ forloop.counter }} - 1)){
+                    $('body > div.off-canvas-wrap').css({
+                        'background-image': 'url("{{ image.bg.url|safe }}")'
+                    });
+                    image_num = ({{ forloop.counter }});
+                }
+                {% else %}
+                    else if (image_num === {{ forloop.counter }} - 1){
+                    $('body > div.off-canvas-wrap').css({
+                        'background-image': 'url("{{ image.bg.url|safe }}")'
+                    });
+                    image_num = {{ forloop.counter }};
+                }
+                {% endif %}
+            {% endfor %}
+
+            {% for image in images %}
+                {% if forloop.first %}
+                    else{
+                    $('body > div.off-canvas-wrap').css({
+                        'background-image': 'url("{{ image.bg.url|safe }}")'
+                    });
+                    image_num = 1;
+                }
+                {% endif %}
+            {% endfor %}
+            });
+
+        }());
+    </script>
+{% endblock %}
